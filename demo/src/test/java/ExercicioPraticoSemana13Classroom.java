@@ -15,6 +15,7 @@ public class ExercicioPraticoSemana13Classroom {
     public static void setUp() {
 
         // Configuração do WebDriver (ChromeDriver)
+
         driver = new ChromeDriver();
         driver.get("https://the-internet.herokuapp.com/login");
     }
@@ -23,25 +24,32 @@ public class ExercicioPraticoSemana13Classroom {
     public void efetuarLogin() {
 
         // Localizar o formulário de login
+
         WebElement loginForm = driver.findElement(By.id("login"));
 
         // Preencher campo Username
+
         loginForm.findElement(By.id("username")).sendKeys("tomsmith");
 
         // Preencher campo Password
+
         loginForm.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
 
         // Clicar no botão Login
+
         loginForm.findElement(By.cssSelector("button[type='submit']")).click();
 
          // Esperar pela mensagem de sucesso e obter seu texto
+
          WebElement successMessage = driver.findElement(By.id("flash"));
          String messageText = successMessage.getText();
  
          // Verificar se a mensagem esperada está presente
+
          assertTrue(messageText.contains("You logged into a secure area!"));
  
          // Clicar no botão de logout 
+         
          driver.findElement(By.xpath("/html/body/div[2]/div/div/a")).click();
      }
  
